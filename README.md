@@ -26,3 +26,4 @@ Practica RLP
 5-To do's
 
 6-Refs
+  [SLAM](https://github.com/uoip/stereo_ptam)
