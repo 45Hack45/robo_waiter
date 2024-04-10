@@ -12,6 +12,8 @@ Practica RLP
     M1-Hardware
     
     M2-3D
+
+    ![Modelo 3D](https://github.com/45Hack45/robo_waiter/blob/main/robot3Dbasic.png)
     
     M3-Controlador
     
