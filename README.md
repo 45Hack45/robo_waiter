@@ -11,12 +11,13 @@ Practica RLP
 
 M1-Hardware
 
+![Diagrama de conexiones](https://github.com/45Hack45/robo_waiter/blob/main/conexiones%20proyecto_bb.png)
+
 M2-3D
 
 ![Modelo 3D](https://github.com/45Hack45/robo_waiter/blob/main/robot3Dbasic.png)
 
 M3-Controlador
-![Diagrama de conexiones]https://github.com/45Hack45/robo_waiter/blob/main/conexiones%20proyecto_bb.png
 
 M4-SLAM
 
