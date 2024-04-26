@@ -1,55 +1,92 @@
-import RPi.GPIO as gpio
-import time
-def init():    
-    gpio.setmode(gpio.BCM)
-    gpio.setup(17, gpio.OUT)
-    gpio.setup(22, gpio.OUT)
-    gpio.setup(23, gpio.OUT)
-    gpio.setup(24, gpio.OUT)
-def forward(sec):
-    init()
-    gpio.output(17, False)
-    gpio.output(22, True)
-    gpio.output(23, True)
-    gpio.output(24, False)
-    time.sleep(sec)
-    gpio.cleanup() 
-def reverse(sec):
-    init()
-    gpio.output(17, True)
-    gpio.output(22, False)
-    gpio.output(23, False)7
-    gpio.output(24, True)
-    time.sleep(sec)
-    gpio.cleanup()
-def left_turn(sec):
-    init()
-    gpio.output(17, True)
-    gpio.output(22, False)
-    gpio.output(23, True)
-    gpio.output(24, False)
-    time.sleep(sec)
-    gpio.cleanup()
-def right_turn(sec):
-    init()
-    gpio.output(17, False)
-    gpio.output(22, True)
-    gpio.output(23, False)
-    gpio.output(24, True)
-    time.sleep(sec)
-    gpio.cleanup()
-seconds = 3
-time.sleep(seconds)
-print("forward")
-forward(seconds)
-time.sleep(seconds-2)
-print("right")
-right_turn(seconds)
-time.sleep(seconds-2)
-time.sleep(seconds)
-print("forward")
-forward(seconds)
-time.sleep(seconds-2)
-print("right")
-right_turn(seconds)
-time.sleep(seconds-2)
+from gpiozero import PWMOutputDevice  from time import sleep 
+# Motor A, Left Side GPIO CONSTANTS  
+PWM_FORWARD_LEFT_PIN = 26	# IN1 - Forward Drive  
+PWM_REVERSE_LEFT_PIN = 19   # IN2 - Reverse Drive  
+# Motor B, Right Side GPIO CONSTANTS  
+PWM_FORWARD_RIGHT_PIN = 13	# IN1 - Forward Drive  
+PWM_REVERSE_RIGHT_PIN = 6	# IN2 - Reverse Drive
+
+# Initialise objects for H-Bridge PWM pins  
+# Set initial duty cycle to 0 and frequency to 1000
+forwardLeft = PWMOutputDevice(PWM_FORWARD_LEFT_PIN, True, 0, 1000)  
+reverseLeft = PWMOutputDevice(PWM_REVERSE_LEFT_PIN, True, 0, 1000)    
+forwardRight = PWMOutputDevice(PWM_FORWARD_RIGHT_PIN, True, 0, 1000)  
+reverseRight = PWMOutputDevice(PWM_REVERSE_RIGHT_PIN, True, 0, 1000)
+
+def allStop():  	
+    forwardLeft.value = 0  	
+    reverseLeft.value = 0  	
+    forwardRight.value = 0  	
+    reverseRight.value = 0    
+    
+def forwardDrive():  	
+    forwardLeft.value = 1.0  	
+    reverseLeft.value = 0  	
+    forwardRight.value = 1.0 
+    reverseRight.value = 0    
+
+def reverseDrive():  	
+    forwardLeft.value = 0 
+    reverseLeft.value = 1.0  	
+    forwardRight.value = 0  	
+    reverseRight.value = 1.0   
+
+def spinLeft():  	
+    forwardLeft.value = 0  	
+    reverseLeft.value = 1.0  	
+    forwardRight.value = 1.0  
+    reverseRight.value = 0    
+
+def SpinRight():  	
+    forwardLeft.value = 1.0  	
+    reverseLeft.value = 0  	
+    forwardRight.value = 0  	
+    reverseRight.value = 1.0   
+
+def forwardTurnLeft():  	
+    forwardLeft.value = 0.2  	
+    reverseLeft.value = 0  
+    forwardRight.value = 0.8  	
+    reverseRight.value = 0   
+
+def forwardTurnRight():  	
+    forwardLeft.value = 0.8  	
+    reverseLeft.value = 0  	
+    forwardRight.value = 0.2  	
+    reverseRight.value = 0   
+
+def reverseTurnLeft():
+    forwardLeft.value = 0  	
+    reverseLeft.value = 0.2  	
+    forwardRight.value = 0  	
+    reverseRight.value = 0.8   
+
+def reverseTurnRight():  	
+        forwardLeft.value = 0  	
+        reverseLeft.value = 0.8  	
+        forwardRight.value = 0  	
+        reverseRight.value = 0.2 
+
+def main():  	
+    allStop()  	
+    forwardDrive()  	
+    sleep(5)  	
+    reverseDrive()  	
+    sleep(5)  	
+    spinLeft()  	
+    sleep(5)  	
+    SpinRight()  	
+    sleep(5)  	
+    forwardTurnLeft()  	
+    sleep(5)  	
+    forwardTurnRight()  	
+    sleep(5)  	
+    reverseTurnLeft()  	
+    sleep(5)  	
+    reverseTurnRight()  
+    sleep(5)  	
+    allStop()    
+    
+if __name__ == "__main__":      
+    """ This is executed when run from the command line """      
+    main() 	
