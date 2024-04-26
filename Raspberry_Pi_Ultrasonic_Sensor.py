@@ -6,3 +6,5 @@ led = LED(26)
 
 sensor.when_in_range = led.on
 sensor.when_out_of_range = led.off
+
+pause()
