@@ -9,10 +9,10 @@ PWM_REVERSE_RIGHT_PIN = 6	# IN2 - Reverse Drive
 
 # Initialise objects for H-Bridge PWM pins  
 # Set initial duty cycle to 0 and frequency to 1000
-forwardLeft = PWMOutputDevice(PWM_FORWARD_LEFT_PIN, True, 0, 1000)  
-reverseLeft = PWMOutputDevice(PWM_REVERSE_LEFT_PIN, True, 0, 1000)    
-forwardRight = PWMOutputDevice(PWM_FORWARD_RIGHT_PIN, True, 0, 1000)  
-reverseRight = PWMOutputDevice(PWM_REVERSE_RIGHT_PIN, True, 0, 1000)
+forwardLeft = PWMOutputDevice(PWM_FORWARD_LEFT_PIN, frequency=1000)  
+reverseLeft = PWMOutputDevice(PWM_REVERSE_LEFT_PIN, frequency=1000)    
+forwardRight = PWMOutputDevice(PWM_FORWARD_RIGHT_PIN, frequency=1000)  
+reverseRight = PWMOutputDevice(PWM_REVERSE_RIGHT_PIN, frequency=1000)
 
 def allStop():  	
     forwardLeft.value = 0  	
