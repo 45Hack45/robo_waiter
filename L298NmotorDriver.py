@@ -1,4 +1,5 @@
-from gpiozero import PWMOutputDevice  from time import sleep 
+from gpiozero import PWMOutputDevice  
+from time import sleep 
 # Motor A, Left Side GPIO CONSTANTS  
 PWM_FORWARD_LEFT_PIN = 26	# IN1 - Forward Drive  
 PWM_REVERSE_LEFT_PIN = 19   # IN2 - Reverse Drive  
