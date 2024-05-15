@@ -1,3 +1,4 @@
 Sensor 1: pins 2 (5V), 9 (Ground), 11 (TRIG) 7 (ECHO) (GPIOs)
 Sensor 2: pins 4 (5V), 6 (Ground), 15 (TRIG) 13 (ECHO) (GPIOs)
 Controlador motor: pins 31 (IN1), 33 (IN2), 35 (IN3), 37 (IN4)
+Boton: pin 36
