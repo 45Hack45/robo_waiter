@@ -3,3 +3,4 @@ Sensor 2: pins 4 (5V), 6 (Ground), 15 (TRIG) 13 (ECHO) (GPIOs)
 Controlador motor: pins 31 (IN1), 33 (IN2), 35 (IN3), 37 (IN4)
 Boton: pin 36
 Microfono: pins 19, 21, 23, 24
+Peso: 38 (DT), 40 (SCK)
