@@ -8,7 +8,6 @@ PWM_FORWARD_RIGHT_PIN = 13
 PWM_REVERSE_RIGHT_PIN = 6
 adc = MCP3008(channel=0)
 sensor1 = DistanceSensor(27, 22, max_distance=1, threshold_distance=0.3)
-sensor2 = DistanceSensor(23, 17, max_distance=1, threshold_distance=0.3)
 boton = Button(16)
 hx = SimpleHX711(20, 21, -370, -367471)
 Boton_on = False
@@ -47,12 +46,12 @@ def reverseDrive():
 
 boton.when_activated = cambio()
 
-if (sensor1.distance < 0.3 or sensor2.distance < 0.3):
+if (sensor1.distance < 0.3):
     forwardDrive()
     sleep(3)
 else:
     allStop()
-    pause.until(sensor1.distance > 0.3 and sensor2.distance > 0.3) 
+    pause.until(sensor1.distance > 0.3) 
 sleep(5)
 if(Boton_on):
     while(Boton_on == True):
@@ -61,9 +60,9 @@ sleep(5)
 weight = hx.get_weight_mean(10)
 if(weight > 0.1):
     sleep(3)
-    if (sensor1.distance < 0.3 or sensor2.distance < 0.3):
+    if (sensor1.distance < 0.3):
         reverseDrive()
         sleep(3)
     else:
         allStop()
-        pause.until(sensor1.distance > 0.3 and sensor2.distance > 0.3)
+        pause.until(sensor1.distance > 0.3)
