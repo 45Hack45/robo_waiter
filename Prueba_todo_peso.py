@@ -1,4 +1,4 @@
-from gpiozero import PWMOutputDevice, DistanceSensor, Button, MCP3008
+from gpiozero import PWMOutputDevice, DistanceSensor, Button
 from time import pause, sleep
 from HX711 import *
 
@@ -6,7 +6,6 @@ PWM_FORWARD_LEFT_PIN = 26
 PWM_REVERSE_LEFT_PIN = 19
 PWM_FORWARD_RIGHT_PIN = 13
 PWM_REVERSE_RIGHT_PIN = 6
-adc = MCP3008(channel=0)
 sensor1 = DistanceSensor(27, 22, max_distance=1, threshold_distance=0.3)
 boton = Button(16)
 hx = SimpleHX711(20, 21, -370, -367471)
@@ -16,11 +15,6 @@ forwardLeft = PWMOutputDevice(PWM_FORWARD_LEFT_PIN, frequency=1000)
 reverseLeft = PWMOutputDevice(PWM_REVERSE_LEFT_PIN, frequency=1000)    
 forwardRight = PWMOutputDevice(PWM_FORWARD_RIGHT_PIN, frequency=1000)  
 reverseRight = PWMOutputDevice(PWM_REVERSE_RIGHT_PIN, frequency=1000)
-
-def leer_valor_adc():
-    valor_adc = adc.value
-    voltaje = valor_adc * 5.0
-    return voltaje
 
 def cambio():
     global Boton_on
@@ -54,8 +48,9 @@ else:
     pause.until(sensor1.distance > 0.3) 
 sleep(5)
 if(Boton_on):
+    print("Grabando")
     while(Boton_on == True):
-        voltaje = leer_valor_adc()
+        print(".")
 sleep(5)
 weight = hx.get_weight_mean(10)
 if(weight > 0.1):
