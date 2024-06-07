@@ -61,3 +61,6 @@ if(weight > 0.1):
     else:
         allStop()
         pause.until(sensor1.distance > 0.3)
+hx.power_down()
+hx.power_up()
+time.sleep(0.5)
