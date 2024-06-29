@@ -2,7 +2,7 @@ import pyaudio
 import wave
 from gpiozero import Button
 from signal import pause
-from threading import Thread
+from threading import Thread, Timer
 
 # Parámetros de grabación
 FORMATO = pyaudio.paInt16
@@ -12,6 +12,8 @@ CHUNK = 1024
 archivo_salida = "grabacion.wav"
 grabando = False
 hilo_grabacion = None
+temporizador = None
+TIEMPO_LIMITE = 50  # Tiempo límite en segundos
 
 # Crear la instancia del botón
 boton = Button(17)
@@ -50,19 +52,28 @@ def grabar_audio():
 
     print(f"Archivo guardado como {archivo_salida}")
 
+# Función para detener la grabación
+def detener_grabacion():
+    global grabando, hilo_grabacion, temporizador
+    grabando = False
+    if hilo_grabacion is not None:
+        hilo_grabacion.join()
+    if temporizador is not None:
+        temporizador.cancel()
+    print("Grabación detenida.")
+
 # Función para alternar la grabación
 def alternar_grabacion():
-    global grabando, hilo_grabacion
+    global grabando, hilo_grabacion, temporizador
 
     if grabando:
-        grabando = False
-        if hilo_grabacion is not None:
-            hilo_grabacion.join()
-        print("Grabación detenida.")
+        detener_grabacion()
     else:
         grabando = True
         hilo_grabacion = Thread(target=grabar_audio)
         hilo_grabacion.start()
+        temporizador = Timer(TIEMPO_LIMITE, detener_grabacion)
+        temporizador.start()
         print("Grabación iniciada.")
 
 # Asignar la función de alternar grabación al evento de presionar el botón
