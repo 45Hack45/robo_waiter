@@ -52,7 +52,8 @@ def grabar_audio():
         archivo_wave.writeframes(b''.join(frames))
 
     print(f"Archivo guardado como {archivo_salida}")
-    speech_to_text_robowaiter.speech_to_text()
+    diccionario = speech_to_text_robowaiter.speech_to_text()
+    return diccionario
 
 # Función para detener la grabación
 def detener_grabacion():
