@@ -42,8 +42,8 @@ def speech_to_text():
             else:
                 word_count[word] = 1
     
-    # Paso 4: Escribir las palabras filtradas y sus conteos en un nuevo fichero
-    with open('fichero_filtrado.txt', 'w') as file:
-        for word, count in word_count.items():
-            file.write(f'{word}: {count}\n')
+    diccionario = {}
+    for word, count in word_count.items():
+        diccionario[word] = count
+    return diccionario
 
