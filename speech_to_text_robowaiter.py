@@ -32,7 +32,7 @@ with open('transcripcion.txt', 'r') as file:
 words = content.split()
 
 # Paso 3: Filtrar las palabras que te interesan y contar sus frecuencias
-palabras_interes = ['you', 'penguin', 'is']
+palabras_interes = ['hamburguesa', 'pollo', 'agua']
 word_count = {}
 
 for word in words:
