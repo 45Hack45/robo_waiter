@@ -3,6 +3,7 @@ import wave
 from gpiozero import Button
 from signal import pause
 from threading import Thread, Timer
+import speech_to_text_robowaiter
 
 # Parámetros de grabación
 FORMATO = pyaudio.paInt16
@@ -16,7 +17,7 @@ temporizador = None
 TIEMPO_LIMITE = 50  # Tiempo límite en segundos
 
 # Crear la instancia del botón
-boton = Button(17)
+boton = Button(16)
 
 # Función para grabar el audio
 def grabar_audio():
@@ -51,6 +52,7 @@ def grabar_audio():
         archivo_wave.writeframes(b''.join(frames))
 
     print(f"Archivo guardado como {archivo_salida}")
+    speech_to_text_robowaiter.speech_to_text()
 
 # Función para detener la grabación
 def detener_grabacion():
