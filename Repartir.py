@@ -49,10 +49,10 @@ def waitUntilClear():
     while sensor1.distance < 0.5:
     # while sensor1.distance < 0.5 or sensor2.distance < 0.5:
         print("Detecting!!!")
-        allStop()
-        sleep(0.1)
+        # allStop()
+        # sleep(0.1)
 
-boton.when_pressed = cambio
+# boton.when_pressed = cambio
 
 
 while True:
@@ -63,10 +63,10 @@ while True:
         if sensor1.distance < 0.5:
             print("Wait!!")
         # if sensor1.distance < 0.5 or sensor2.distance < 0.5:
-            waitUntilClear()
-            start_time = time()
-        forwardDrive()
-        sleep(0.1)
+            # waitUntilClear()
+            # start_time = time()
+        # forwardDrive()
+        # sleep(0.1)
     
     allStop()
     rotateRight()
