@@ -48,6 +48,7 @@ def rotateRight():
 def waitUntilClear():
     while sensor1.distance < 0.5:
     # while sensor1.distance < 0.5 or sensor2.distance < 0.5:
+        print("Detecting!!!")
         allStop()
         sleep(0.1)
 
