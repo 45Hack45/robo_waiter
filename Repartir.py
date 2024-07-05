@@ -60,8 +60,8 @@ while True:
     move_duration = 5
     while (time() - start_time) < move_duration:
         print("Run!")
-        if sensor1.distance < 0.5:
-            print("Wait!!")
+        # if sensor1.distance < 0.5:
+        #     print("Wait!!")
         # if sensor1.distance < 0.5 or sensor2.distance < 0.5:
             # waitUntilClear()
             # start_time = time()
