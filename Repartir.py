@@ -9,7 +9,7 @@ PWM_REVERSE_RIGHT_PIN = 6
 
 
 sensor1 = DistanceSensor(echo=27, trigger=22, max_distance=1, threshold_distance=0.5)
-sensor2 = DistanceSensor(echo=23, trigger=17, max_distance=1, threshold_distance=0.5)
+# sensor2 = DistanceSensor(echo=23, trigger=17, max_distance=1, threshold_distance=0.5)
 boton = Button(16)
 
 Boton_on = False
@@ -46,7 +46,8 @@ def rotateRight():
     reverseRight.value = 1.0
 
 def waitUntilClear():
-    while sensor1.distance < 0.5 or sensor2.distance < 0.5:
+    while sensor1.distance < 0.5:
+    # while sensor1.distance < 0.5 or sensor2.distance < 0.5:
         allStop()
         sleep(0.1)
 
@@ -57,7 +58,8 @@ while True:
     start_time = time()
     move_duration = 5
     while (time() - start_time) < move_duration:
-        if sensor1.distance < 0.5 or sensor2.distance < 0.5:
+        if sensor1.distance < 0.5:
+        # if sensor1.distance < 0.5 or sensor2.distance < 0.5:
             waitUntilClear()
             start_time = time()
         forwardDrive()
