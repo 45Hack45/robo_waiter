@@ -9,7 +9,18 @@ Practica RLP
 
 ### 4-Libraries
 
-opencv
+gpiozero
+time 
+io
+google.cloud
+google.oauth2
+hx711
+pyaudio
+wave
+signal
+threading
+queue
+
 
 #### M1-Hardware
 
@@ -21,8 +32,6 @@ opencv
 
 #### M3-Controlador
 
-#### M4-SLAM
-
 #### M5-Ruta
 
 #### M6-Movimiento
@@ -32,4 +41,4 @@ opencv
 ### 5-To do's
 
 ### 6-Refs
-  [SLAM](https://github.com/uoip/stereo_ptam)
+
