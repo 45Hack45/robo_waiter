@@ -1,6 +1,5 @@
-Sensor 1: pins 2 (5V), 9 (Ground), 11 (TRIG) 7 (ECHO) (GPIOs)
-Sensor 2: pins 4 (5V), 6 (Ground), 15 (TRIG) 13 (ECHO) (GPIOs)
-Controlador motor: pins left GPIO26 (IN1), GPIO19 (IN2), pins right GPIO13 (IN1), GPIO6 (IN2)
-Boton: pin GPIO16
-Microfono: pins 19, 21, 23, 24
-Peso: GPIO02 (DT), GPIO03 (SCK)
+Sensor 1 (Izquierda): pins 15 (TRIG) 13 (ECHO) (GPIOs)
+Sensor 2 (Derecha): pins 11 (TRIG) 16 (ECHO) (GPIOs)
+Controlador motor: pins left 37 (IN1), 35 (IN2), pins right 33 (IN1), 31 (IN2)
+Boton: pin 36
+Peso: 3 (DT), 5 (SCK)
