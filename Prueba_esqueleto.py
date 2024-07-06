@@ -14,8 +14,11 @@ sensor1 = DistanceSensor(echo=27, trigger=22, max_distance=1, threshold_distance
 sensor2 = DistanceSensor(echo=23, trigger=17, max_distance=1, threshold_distance=0.5)
 boton = Button(16)
 hx = SimpleHX711(20, 21, -370, -367471)
+print("a")
 hx.setUnit(Mass.Unit.G)
+print("b")
 hx.zero()
+print("c")
 
 Boton_on = False
 
