@@ -96,6 +96,10 @@ while True:
         
         sleep(2)
     else:
+        if(table == 2):
+            table = 1
+        else:
+            table = 2
         comanda = queue.get()
         print(str(comanda))
         print("Esperando. Ponga el peso.")
