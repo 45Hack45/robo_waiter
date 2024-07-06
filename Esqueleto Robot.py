@@ -68,7 +68,7 @@ while True:
             
         allStop()
         rotateBack()
-        sleep(3) 
+        sleep(2.1) 
         allStop()
         sleep(1)
         
@@ -104,7 +104,7 @@ while True:
                     
                 allStop()
                 rotateBack()
-                sleep(1.6)
+                sleep(3) 
                 allStop()
                 sleep(1)
                 
