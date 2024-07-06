@@ -15,7 +15,7 @@ boton = Button(16)
 hx = SimpleHX711(2, 3, -370, -367471)
 hx.setUnit(Mass.Unit.G)
 hx.zero()
-print(float(str(hx.weight(35))))
+print(float(str(hx.weight(35))[:-2]))
 
 Boton_on = False
 
@@ -100,7 +100,7 @@ while True:
         print(str(comanda))
         print("Esperando. Ponga el peso.")
         sleep(10)
-        weight = float(str(hx.weight(35)))
+        weight = float(str(hx.weight(35))[:-2])
         print(str(weight))
         if(weight > 0.1):
             while(table != comanda):
@@ -131,6 +131,6 @@ while True:
 
             print("Quite el peso")
             while(weight > 0.1):
-                weight = float(str(hx.weight(35)))
+                weight = float(str(hx.weight(35))[:-2])
                 print("Esperando quitar peso")
                 
