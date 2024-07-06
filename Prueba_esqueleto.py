@@ -87,7 +87,7 @@ while True:
         
         if Boton_on:
             #Juntarlo con lo del audio
-            #queue.put(table)
+            queue.put(table)
             print('Has pedido una hamburguesa')
             cambio()
         
