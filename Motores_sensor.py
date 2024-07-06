@@ -26,6 +26,13 @@ def forwardDrive():
     forwardRight.value = 1.0 
     reverseRight.value = 0  
 
-sensor1.when_in_range = allStop
-sensor1.when_out_of_range = forwardDrive
+# sensor1.when_in_range = allStop
+# sensor1.when_out_of_range = forwardDrive
+
+while True:
+    if sensor1.distance < 0.4:
+        allStop()
+    else:
+        forwardDrive()
+
 pause()
