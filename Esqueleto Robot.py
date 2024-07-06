@@ -54,7 +54,7 @@ def waitUntilClear():
         allStop()
         sleep(0.1)
 
-boton.when_pressed = cambio
+boton.when_pressed = cambio()
 
 
 while True:
@@ -87,6 +87,7 @@ while True:
         if Boton_on:
             #Juntarlo con lo del audio
             queue.put(table)
+            cambio()
         
         sleep(2)
     else:
