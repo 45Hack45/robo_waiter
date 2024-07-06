@@ -6,6 +6,7 @@ PWM_REVERSE_LEFT_PIN = 19
 PWM_FORWARD_RIGHT_PIN = 13
 PWM_REVERSE_RIGHT_PIN = 6
 sensor1 = DistanceSensor(27, 22, max_distance=1, threshold_distance=0.4)
+sensor2 = DistanceSensor(23, 17, max_distance=1, threshold_distance=0.4)
 
 forwardLeft = PWMOutputDevice(PWM_FORWARD_LEFT_PIN, frequency=1000)  
 reverseLeft = PWMOutputDevice(PWM_REVERSE_LEFT_PIN, frequency=1000)    
@@ -30,7 +31,7 @@ def forwardDrive():
 # sensor1.when_out_of_range = forwardDrive
 
 while True:
-    if sensor1.distance < 0.4:
+    if sensor1.distance < 0.5 or sensor2.distance < 0.5:
         allStop()
     else:
         forwardDrive()
