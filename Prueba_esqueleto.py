@@ -14,6 +14,8 @@ sensor1 = DistanceSensor(echo=27, trigger=22, max_distance=1, threshold_distance
 sensor2 = DistanceSensor(echo=23, trigger=17, max_distance=1, threshold_distance=0.5)
 boton = Button(16)
 hx = SimpleHX711(20, 21, -370, -367471)
+hx.setUnit(Mass.Unit.G)
+hx.zero()
 
 Boton_on = False
 
@@ -93,7 +95,7 @@ while True:
     else:
         comanda = queue.get()
         sleep(10)
-        weight = hx.get_weight_mean(10)
+        weight = hx.weight(35)
         if(weight > 0.1):
             while(table != comanda):
                 if(table == 2):
@@ -107,17 +109,16 @@ while True:
                 allStop()
                 sleep(1)
                 
-                start_time = time()
-                move_duration = 5
-                while (time() - start_time) < move_duration:
+                tiempo = 4
+                while tiempo > 0:
                     if sensor1.distance < 0.5 or sensor2.distance < 0.5:
                         waitUntilClear()
-                        start_time = time()
                     forwardDrive()
                     sleep(0.1)
+                    tiempo = tiempo - 0.1
                 
                 allStop()
                 sleep(5)
             while(weight > 0.1):
-                weight = hx.get_weight_mean(10)
+                weight = hx.weight(35)
                 
