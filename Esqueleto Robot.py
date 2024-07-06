@@ -104,7 +104,7 @@ while True:
                     
                 allStop()
                 rotateBack()
-                sleep(3) 
+                sleep(2.075) 
                 allStop()
                 sleep(1)
                 
