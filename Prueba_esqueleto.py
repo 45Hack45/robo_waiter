@@ -62,6 +62,7 @@ boton.when_pressed = cambio
 while True:
     
     if(queue.empty()):
+        print("Mover a mesa")
     
         if(table == 2):
             table = 1
@@ -77,7 +78,9 @@ while True:
         tiempo = 4
         while tiempo > 0:
             if sensor1.distance < 0.5 or sensor2.distance < 0.5:
+                print("Obstaculo")
                 waitUntilClear()
+                print("Libre")
             forwardDrive()
             sleep(0.1)
             tiempo = tiempo - 0.1
@@ -94,15 +97,19 @@ while True:
         sleep(2)
     else:
         comanda = queue.get()
+        print(str(comanda))
+        print("Esperando. Ponga el peso.")
         sleep(10)
         weight = hx.weight(35)
+        print(str(weight))
         if(weight > 0.1):
             while(table != comanda):
                 if(table == 2):
                     table = 1
                 else:
                     table = 2
-                    
+
+                print("Mover a siguiente mesa")
                 allStop()
                 rotateBack()
                 sleep(2) 
@@ -112,13 +119,18 @@ while True:
                 tiempo = 4
                 while tiempo > 0:
                     if sensor1.distance < 0.5 or sensor2.distance < 0.5:
+                        print("Obstaculo")
                         waitUntilClear()
+                        print("Libre")
                     forwardDrive()
                     sleep(0.1)
                     tiempo = tiempo - 0.1
-                
+
                 allStop()
                 sleep(5)
+
+            print("Quite el peso")
             while(weight > 0.1):
                 weight = hx.weight(35)
+                print("Esperando quitar peso")
                 
