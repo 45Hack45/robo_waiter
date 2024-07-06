@@ -23,7 +23,7 @@ reverseLeft = PWMOutputDevice(PWM_REVERSE_LEFT_PIN, frequency=1000)
 forwardRight = PWMOutputDevice(PWM_FORWARD_RIGHT_PIN, frequency=1000)  
 reverseRight = PWMOutputDevice(PWM_REVERSE_RIGHT_PIN, frequency=1000)
 
-table = 0
+table = 1
 queue = Queue()
 
 
@@ -43,7 +43,7 @@ def forwardDrive():
     forwardRight.value = 1.0 
     reverseRight.value = 0 
 
-def rotateRight():  
+def rotateBack():  
     forwardLeft.value = 1.0  
     reverseLeft.value = 0  
     forwardRight.value = 0  
@@ -61,19 +61,19 @@ while True:
     
     if(queue.empty()):
     
-        if(table == 4):
+        if(table == 2):
             table = 1
         else:
-            table += 1
+            table = 2
             
         allStop()
-        rotateRight()
-        sleep(1) 
+        rotateBack()
+        sleep(3) 
         allStop()
         sleep(1)
         
         start_time = time()
-        move_duration = 5
+        move_duration = 4
         while (time() - start_time) < move_duration:
             if sensor1.distance < 0.5 or sensor2.distance < 0.5:
                 waitUntilClear()
@@ -91,17 +91,18 @@ while True:
         sleep(2)
     else:
         comanda = queue.get()
+        sleep(10)
         weight = hx.get_weight_mean(10)
         if(weight > 0.1):
             while(table != comanda):
-                if(table == 4):
+                if(table == 2):
                     table = 1
                 else:
-                    table += 1
+                    table = 2
                     
                 allStop()
-                rotateRight()
-                sleep(1) 
+                rotateBack()
+                sleep(3) 
                 allStop()
                 sleep(1)
                 
