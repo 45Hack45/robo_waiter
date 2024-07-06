@@ -54,7 +54,7 @@ def waitUntilClear():
         allStop()
         sleep(0.1)
 
-boton.when_pressed = cambio()
+boton.when_pressed = cambio
 
 
 while True:
