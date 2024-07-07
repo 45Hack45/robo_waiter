@@ -3,7 +3,6 @@ import wave
 import threading
 from gpiozero import Button
 import time
-import speech_to_text_robowaiter
 
 # Configuración de PyAudio
 FORMAT = pyaudio.paInt16
@@ -11,6 +10,7 @@ CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
 AUDIO_OUTPUT_FILENAME = "grabacion.wav"
+
 # Configuración de GPIO
 stop_button = Button(16)  # Usando el pin GPIO 17 para detener la grabación
 
@@ -51,7 +51,7 @@ def start_recording():
 def stop_recording():
     global is_recording
     is_recording = False
-    GRABAR = False
+
 def main(start):
     if start:
         print("Starting recording...")
@@ -59,3 +59,7 @@ def main(start):
         recording_thread.start()
         stop_button.when_pressed = stop_recording
 
+    # Mantener el programa en ejecución
+    print("Press the stop button to end recording.")
+    while True:
+        time.sleep(1)  # Mantener el programa en ejecución
