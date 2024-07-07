@@ -18,7 +18,7 @@ hx.setUnit(Mass.Unit.G)
 hx.zero()
 print(float(str(hx.weight(35))[:-2]))
 
-Boton_on = False
+Boton_on = True
 
 
 forwardLeft = PWMOutputDevice(PWM_FORWARD_LEFT_PIN, frequency=1000)  
@@ -33,6 +33,7 @@ queue = Queue()
 def cambio():
     global Boton_on
     Boton_on = not Boton_on
+    
     
 def allStop():  	
     forwardLeft.value = 0  	
@@ -73,7 +74,16 @@ while tiempo > 0:
 allStop()
 sleep(1)
 
-grabar_audio_button.grabar_audio()
+tiempo = 15
+sleep(5)
+if(Boton_on == False):
+    grabar_audio_button.alternar_grabacion(False)
+    print('Grabando.')
+    while(Boton_on == False or tiempo > 0):
+        print('.')
+        sleep(1)
+        tiempo = tiempo - 1
+    grabar_audio_button.alternar_grabacion(True)
 
 sleep(1)
 
@@ -100,7 +110,16 @@ while True:
         else:
             table = 2
         
-        grabar_audio_button.grabar_audio()
+        tiempo = 15
+        sleep(5)
+        if(Boton_on == False):
+            grabar_audio_button.alternar_grabacion(False)
+            print('Grabando.')
+            while(Boton_on == False or tiempo > 0):
+                print('.')
+                sleep(1)
+                tiempo = tiempo - 1
+            grabar_audio_button.alternar_grabacion(True)
         
         allStop()
         rotateBack()
