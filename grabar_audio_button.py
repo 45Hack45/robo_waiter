@@ -61,4 +61,4 @@ def main(start):
         print(diccionario)
 
 if __name__ == "__main__":
-    main(True)
+    boton.when_pressed = main(True)
