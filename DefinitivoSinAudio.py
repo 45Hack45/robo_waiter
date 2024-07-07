@@ -79,6 +79,7 @@ if Boton_on:
     print('Esperando.')
     while(Boton_on == True):
         print('.')
+        sleep(0.5)
         
     queue.put(table)
     print('Has pedido una hamburguesa')
@@ -114,6 +115,7 @@ while True:
             print('Esperando.')
             while(Boton_on == True):
                 print('.')
+                sleep(0.5)
                 
             queue.put(table)
             print('Has pedido una hamburguesa')
