@@ -1,6 +1,6 @@
 
-import speech_to_text_robowaiter
-import grabar_audio_button
+"import speech_to_text_robowaiter"
+"import grabar_audio_button"
 from gpiozero import PWMOutputDevice, DistanceSensor, Button
 from time import sleep
 from queue import Queue
@@ -220,3 +220,4 @@ while True:
             sleep(2.3) 
             allStop()
             sleep(1)
+
