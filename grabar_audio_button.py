@@ -62,3 +62,5 @@ def main(start):
 
 diccionario = button.when_pressed = main(true)
 print(diccionario)
+
+pause()
