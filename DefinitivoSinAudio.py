@@ -121,15 +121,23 @@ while True:
             print('Has pedido una hamburguesa')
 
         sleep(2)
-        
-        allStop()
-        rotateBack()
-        sleep(2.2) 
-        allStop()
-        sleep(1)
+
+        if(queue.empty()):
+            allStop()
+            rotateBack()
+            sleep(2.2) 
+            allStop()
+            sleep(1)
     else:
         comanda = queue.get()
         if(table == 2):
+            
+            allStop()
+            rotateBack()
+            sleep(2.2) 
+            allStop()
+            sleep(1)
+            
             tiempo = 4
             while tiempo > 0:
                 if sensor1.distance < 0.5 or sensor2.distance < 0.5:
@@ -139,12 +147,6 @@ while True:
                 forwardDrive()
                 sleep(0.1)
                 tiempo = tiempo - 0.1
-            allStop()
-            sleep(1)
-        else:
-            allStop()
-            rotateBack()
-            sleep(2.2) 
             allStop()
             sleep(1)
             
