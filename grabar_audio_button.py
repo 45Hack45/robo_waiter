@@ -73,7 +73,5 @@ def alternar_grabacion(grabando):
     else:
         hilo_grabacion = Thread(target=grabar_audio)
         hilo_grabacion.start()
-        temporizador = Timer(TIEMPO_LIMITE, detener_grabacion)
-        temporizador.start()
         print("Grabación iniciada.")
 
