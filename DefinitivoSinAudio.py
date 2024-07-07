@@ -166,7 +166,7 @@ while True:
         
         print("Esperando. Ponga el peso.")
         weight = float(str(hx.weight(35))[:-2])
-        while(weight < 0.1):
+        while(weight < 10):
             weight = float(str(hx.weight(35))[:-2])
 
         tiempo = 4
@@ -199,7 +199,7 @@ while True:
             sleep(1)
         
         print("Quite el peso")
-        while(weight > 0.1):
+        while(weight > 10):
             weight = float(str(hx.weight(35))[:-2])
         
         if(comanda == 2):
