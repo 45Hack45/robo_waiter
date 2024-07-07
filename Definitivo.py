@@ -1,4 +1,5 @@
-
+import pyaudio
+import wave
 from gpiozero import PWMOutputDevice, DistanceSensor, Button
 from time import sleep
 from queue import Queue
