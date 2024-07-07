@@ -2,6 +2,7 @@ from gpiozero import PWMOutputDevice, DistanceSensor, Button
 from time import sleep
 from queue import Queue
 from HX711 import *
+import grabar_audio_button
 
 PWM_FORWARD_LEFT_PIN = 26
 PWM_REVERSE_LEFT_PIN = 19
@@ -72,13 +73,7 @@ while tiempo > 0:
 allStop()
 sleep(1)
 
-if Boton_on:
-    print('Esperando.')
-    while(Boton_on == True):
-        print('.')
-        
-    queue.put(table)
-    print('Has pedido una hamburguesa')
+grabar_audio_button.grabar_audio()
 
 sleep(1)
 
@@ -105,13 +100,7 @@ while True:
         else:
             table = 2
         
-        if Boton_on:
-            print('Esperando.')
-            while(Boton_on == True):
-                print('.')
-                
-            queue.put(table)
-            print('Has pedido una hamburguesa')
+        grabar_audio_button.grabar_audio()
         
         allStop()
         rotateBack()
