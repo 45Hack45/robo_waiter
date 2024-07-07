@@ -11,7 +11,6 @@ CANALES = 1
 RATE = 44100
 CHUNK = 1024
 archivo_salida = "grabacion.wav"
-grabando = False
 hilo_grabacion = None
 temporizador = None
 TIEMPO_LIMITE = 15  # Tiempo límite en segundos
@@ -66,13 +65,12 @@ def detener_grabacion():
     print("Grabación detenida.")
 
 # Función para alternar la grabación
-def alternar_grabacion():
+def alternar_grabacion(grabando):
     global grabando, hilo_grabacion, temporizador
 
     if grabando:
         detener_grabacion()
     else:
-        grabando = True
         hilo_grabacion = Thread(target=grabar_audio)
         hilo_grabacion.start()
         temporizador = Timer(TIEMPO_LIMITE, detener_grabacion)
