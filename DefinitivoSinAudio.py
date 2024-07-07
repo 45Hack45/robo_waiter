@@ -72,6 +72,8 @@ while tiempo > 0:
 allStop()
 sleep(1)
 
+sleep(5)
+
 if Boton_on:
     print('Esperando.')
     while(Boton_on == True):
@@ -104,6 +106,8 @@ while True:
             table = 1
         else:
             table = 2
+
+        sleep(5)
         
         if Boton_on:
             print('Esperando.')
