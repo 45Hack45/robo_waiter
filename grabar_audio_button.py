@@ -1,77 +1,64 @@
+import speech_to_text_robowaiter
 import pyaudio
 import wave
+import threading
 from gpiozero import Button
-from signal import pause
-from threading import Thread, Timer
-import speech_to_text_robowaiter
 
-# Parámetros de grabación
-FORMATO = pyaudio.paInt16
-CANALES = 1
+# Configuración de PyAudio
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
-archivo_salida = "grabacion.wav"
-hilo_grabacion = None
-temporizador = None
-TIEMPO_LIMITE = 15  # Tiempo límite en segundos
+AUDIO_OUTPUT_FILENAME = "output.wav"
 
-# Crear la instancia del botón
-boton = Button(16)
+# Configuración de GPIO
+button = Button(17)  # Usando el pin GPIO 17
 
-# Función para grabar el audio
-def grabar_audio():
-    global grabando
+# Variable global para controlar la grabación
+is_recording = False
+
+def start_recording():
+    global is_recording
+    is_recording = True
+
+    # Crear una instancia de PyAudio
     audio = pyaudio.PyAudio()
 
-    # Iniciar la grabación
-    stream = audio.open(format=FORMATO, channels=CANALES,
+    # Abrir el flujo de audio
+    stream = audio.open(format=FORMAT, channels=CHANNELS,
                         rate=RATE, input=True,
                         frames_per_buffer=CHUNK)
-    
-    print("Grabando...")
 
     frames = []
 
-    while grabando:
+    while is_recording:
         data = stream.read(CHUNK)
         frames.append(data)
 
-    print("Grabación completada.")
-
-    # Detener la grabación
+    # Detener y cerrar el flujo de audio
     stream.stop_stream()
     stream.close()
     audio.terminate()
 
-    # Guardar el audio en un archivo WAV
-    with wave.open(archivo_salida, 'wb') as archivo_wave:
-        archivo_wave.setnchannels(CANALES)
-        archivo_wave.setsampwidth(audio.get_sample_size(FORMATO))
-        archivo_wave.setframerate(RATE)
-        archivo_wave.writeframes(b''.join(frames))
-
-    print(f"Archivo guardado como {archivo_salida}")
+    # Guardar la grabación en un archivo WAV
+    wf = wave.open(AUDIO_OUTPUT_FILENAME, 'wb')
+    wf.setnchannels(CHANNELS)
+    wf.setsampwidth(audio.get_sample_size(FORMAT))
+    wf.setframerate(RATE)
+    wf.writeframes(b''.join(frames))
+    wf.close()
     diccionario = speech_to_text_robowaiter.speech_to_text()
-    return diccionario
+    return diccionario  
+    
+def stop_recording():
+    global is_recording
+    is_recording = False
+    
+def main(start):
+    if start:
+        recording_thread = threading.Thread(target=start_recording)
+        recording_thread.start()
+        button.when_pressed = stop_recording
 
-# Función para detener la grabación
-def detener_grabacion():
-    global grabando, hilo_grabacion, temporizador
-    grabando = False
-    if hilo_grabacion is not None:
-        hilo_grabacion.join()
-    if temporizador is not None:
-        temporizador.cancel()
-    print("Grabación detenida.")
-
-# Función para alternar la grabación
-def alternar_grabacion(grabando):
-    global grabando, hilo_grabacion, temporizador
-
-    if grabando:
-        detener_grabacion()
-    else:
-        hilo_grabacion = Thread(target=grabar_audio)
-        hilo_grabacion.start()
-        print("Grabación iniciada.")
+button.when_pressed = main(true)
 
