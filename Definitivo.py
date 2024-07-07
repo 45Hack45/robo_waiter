@@ -3,13 +3,14 @@ from time import sleep
 from queue import Queue
 from HX711 import *
 import grabar_audio_button
+import speech_to_text_robowaiter
 
 PWM_FORWARD_LEFT_PIN = 26
 PWM_REVERSE_LEFT_PIN = 19
 PWM_FORWARD_RIGHT_PIN = 13
 PWM_REVERSE_RIGHT_PIN = 6
 
-
+print('Antes de peso')
 sensor1 = DistanceSensor(echo=27, trigger=22, max_distance=1, threshold_distance=0.5)
 sensor2 = DistanceSensor(echo=23, trigger=17, max_distance=1, threshold_distance=0.5)
 boton = Button(16)
@@ -17,8 +18,9 @@ hx = SimpleHX711(2, 3, -370, -367471)
 hx.setUnit(Mass.Unit.G)
 hx.zero()
 print(float(str(hx.weight(35))[:-2]))
+print('Después de peso')
 
-Boton_on = True
+Boton_on = False
 
 
 forwardLeft = PWMOutputDevice(PWM_FORWARD_LEFT_PIN, frequency=1000)  
@@ -33,7 +35,6 @@ queue = Queue()
 def cambio():
     global Boton_on
     Boton_on = not Boton_on
-    
     
 def allStop():  	
     forwardLeft.value = 0  	
@@ -74,18 +75,14 @@ while tiempo > 0:
 allStop()
 sleep(1)
 
-tiempo = 15
 sleep(5)
-if(Boton_on == False):
-    grabar_audio_button.alternar_grabacion(False)
-    print('Grabando.')
-    while(Boton_on == False or tiempo > 0):
-        print('.')
-        sleep(1)
-        tiempo = tiempo - 1
-    grabar_audio_button.alternar_grabacion(True)
 
-sleep(1)
+if Boton_on:
+    grabar_audio_button.main(Boton_on)
+    diccionario = speech_to_text_robowaiter.speech_to_text()
+    print(diccionario)
+
+sleep(2)
 
 while True:
     
@@ -109,26 +106,36 @@ while True:
             table = 1
         else:
             table = 2
-        
-        tiempo = 15
+
         sleep(5)
-        if(Boton_on == False):
-            grabar_audio_button.alternar_grabacion(False)
-            print('Grabando.')
-            while(Boton_on == False or tiempo > 0):
-                print('.')
-                sleep(1)
-                tiempo = tiempo - 1
-            grabar_audio_button.alternar_grabacion(True)
         
-        allStop()
-        rotateBack()
-        sleep(2) 
-        allStop()
-        sleep(1)
+        if Boton_on:
+            print('Esperando.')
+            while(Boton_on == True):
+                print('.')
+                sleep(0.5)
+                
+            queue.put(table)
+            print('Has pedido una hamburguesa')
+
+        sleep(2)
+
+        if(queue.empty()):
+            allStop()
+            rotateBack()
+            sleep(2.3) 
+            allStop()
+            sleep(1)
     else:
         comanda = queue.get()
         if(table == 2):
+            
+            allStop()
+            rotateBack()
+            sleep(2.3) 
+            allStop()
+            sleep(1)
+            
             tiempo = 4
             while tiempo > 0:
                 if sensor1.distance < 0.5 or sensor2.distance < 0.5:
@@ -138,12 +145,6 @@ while True:
                 forwardDrive()
                 sleep(0.1)
                 tiempo = tiempo - 0.1
-            allStop()
-            sleep(1)
-        else:
-            allStop()
-            rotateBack()
-            sleep(2) 
             allStop()
             sleep(1)
             
@@ -158,13 +159,20 @@ while True:
             tiempo = tiempo - 0.1
         allStop()
         sleep(1)
-        
-            
+
+        allStop()
+        rotateBack()
+        sleep(2.3) 
+        allStop()
+        sleep(3)    
         
         print("Esperando. Ponga el peso.")
         weight = float(str(hx.weight(35))[:-2])
-        while(weight < 0.1):
+        print(float(str(hx.weight(35))[:-2]))
+        while(weight < 10  or weight > 1000):
             weight = float(str(hx.weight(35))[:-2])
+            print(float(str(hx.weight(35))[:-2]))
+            sleep(1)
 
         tiempo = 4
         while tiempo > 0:
@@ -193,15 +201,17 @@ while True:
                 sleep(0.1)
                 tiempo = tiempo - 0.1
             allStop()
-            sleep(1)
+            sleep(3)
         
         print("Quite el peso")
-        while(weight > 0.1):
+        while(weight > 10):
             weight = float(str(hx.weight(35))[:-2])
+            print(float(str(hx.weight(35))[:-2]))
+            sleep(1)
         
         if(comanda == 2):
             allStop()
             rotateBack()
-            sleep(2) 
+            sleep(2.3) 
             allStop()
             sleep(1)
