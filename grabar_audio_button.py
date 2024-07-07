@@ -17,6 +17,10 @@ button = Button(16)  # Usando el pin GPIO 17
 # Variable global para controlar la grabación
 is_recording = False
 
+def toggle_state():
+    global is_recording
+    is_recording = not is_recording
+
 def start_recording():
     global is_recording
     is_recording = True
@@ -53,12 +57,15 @@ def stop_recording():
     global is_recording
     is_recording = False
 
-def main(start):
-    if start:
-        recording_thread = threading.Thread(target=start_recording)
-        recording_thread.start()
-        button.when_pressed = stop_recording
+def main():
+        global is_recording
 
-button.when_pressed = main(True)
+        toggle_state()
+
+        if is_recording:
+            recording_thread = threading.Thread(target=start_recording)
+            recording_thread.start()
+
+button.when_pressed = main
 diccionario = speech_to_text_robowaiter.speech_to_text()
 print(diccionario)
