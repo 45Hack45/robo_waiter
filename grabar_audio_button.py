@@ -1,25 +1,22 @@
-import speech_to_text_robowaiter
 import pyaudio
 import wave
 import threading
 from gpiozero import Button
+import time
+import speech_to_text_robowaiter
 
 # Configuración de PyAudio
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
-AUDIO_OUTPUT_FILENAME = "output.wav"
+AUDIO_OUTPUT_FILENAME = "grabacion.wav"
 
 # Configuración de GPIO
-button = Button(16)  # Usando el pin GPIO 17
+stop_button = Button(16)  # Usando el pin GPIO 17 para detener la grabación
 
 # Variable global para controlar la grabación
 is_recording = False
-
-def toggle_state():
-    global is_recording
-    is_recording = not is_recording
 
 def start_recording():
     global is_recording
@@ -51,21 +48,25 @@ def start_recording():
     wf.setframerate(RATE)
     wf.writeframes(b''.join(frames))
     wf.close()
-    print("Grabación guardada")
-    
+
 def stop_recording():
     global is_recording
     is_recording = False
 
-def main():
-        global is_recording
+def main(start):
+    if start:
+        print("Starting recording...")
+        recording_thread = threading.Thread(target=start_recording)
+        recording_thread.start()
+        stop_button.when_pressed = stop_recording
 
-        toggle_state()
-
-        if is_recording:
-            recording_thread = threading.Thread(target=start_recording)
-            recording_thread.start()
-
-button.when_pressed = main
-diccionario = speech_to_text_robowaiter.speech_to_text()
-print(diccionario)
+if __name__ == "__main__":
+    # Reemplaza True por el valor que quieres pasar como argumento
+    main(True)
+    
+    # Mantener el programa en ejecución
+    print("Press the stop button to end recording.")
+    while True:
+        time.sleep(1)  # Mantener el programa en ejecución
+    diccionario = speech_to_text_robowaiter.speech_to_text()
+    print(diccionario)
