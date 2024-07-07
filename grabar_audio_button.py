@@ -61,5 +61,5 @@ def main(start):
 
     # Mantener el programa en ejecución
     print("Press the stop button to end recording.")
-    while True:
+    while is_recording:
         time.sleep(1)  # Mantener el programa en ejecución
