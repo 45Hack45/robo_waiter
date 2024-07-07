@@ -11,8 +11,6 @@ RATE = 44100
 CHUNK = 1024
 AUDIO_OUTPUT_FILENAME = "grabacion.wav"
 
-# Configuración de GPIO
-stop_button = Button(16)  # Usando el pin GPIO 17 para detener la grabación
 
 # Variable global para controlar la grabación
 is_recording = False
