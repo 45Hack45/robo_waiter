@@ -125,7 +125,7 @@ while True:
         if(queue.empty()):
             allStop()
             rotateBack()
-            sleep(2.2) 
+            sleep(2.3) 
             allStop()
             sleep(1)
     else:
@@ -134,7 +134,7 @@ while True:
             
             allStop()
             rotateBack()
-            sleep(2.2) 
+            sleep(2.3) 
             allStop()
             sleep(1)
             
@@ -164,7 +164,7 @@ while True:
 
         allStop()
         rotateBack()
-        sleep(2.2) 
+        sleep(2.3) 
         allStop()
         sleep(3)    
         
@@ -214,6 +214,6 @@ while True:
         if(comanda == 2):
             allStop()
             rotateBack()
-            sleep(2.2) 
+            sleep(2.3) 
             allStop()
             sleep(1)
