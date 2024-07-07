@@ -12,7 +12,7 @@ CHUNK = 1024
 AUDIO_OUTPUT_FILENAME = "output.wav"
 
 # Configuración de GPIO
-button = Button(17)  # Usando el pin GPIO 17
+button = Button(16)  # Usando el pin GPIO 17
 
 # Variable global para controlar la grabación
 is_recording = False
