@@ -15,11 +15,11 @@ def cambio():
     Boton_on = not Boton_on
 
 boton.when_pressed = cambio
-
+sleep(10) 
 if Boton_on:
     print('Esperando.')
     grabar_audio_button.main(Boton_on)
     diccionario = speech_to_text_robowaiter.speech_to_text()
     print(diccionario)
 
-sleep(2)
+
