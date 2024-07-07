@@ -17,7 +17,7 @@ temporizador = None
 TIEMPO_LIMITE = 50  # Tiempo límite en segundos
 
 # Crear la instancia del botón
-boton = Button(17)
+boton = Button(16)
 
 # Función para grabar el audio
 def grabar_audio():
