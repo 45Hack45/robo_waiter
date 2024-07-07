@@ -10,7 +10,7 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
-AUDIO_OUTPUT_FILENAME = "output.wav"
+AUDIO_OUTPUT_FILENAME = "grabacion.wav"
 
 # Configuración de GPIO
 button = Button(17)  # Usando el pin GPIO 17
