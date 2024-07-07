@@ -14,7 +14,7 @@ archivo_salida = "grabacion.wav"
 grabando = False
 hilo_grabacion = None
 temporizador = None
-TIEMPO_LIMITE = 50  # Tiempo límite en segundos
+TIEMPO_LIMITE = 15  # Tiempo límite en segundos
 
 # Crear la instancia del botón
 boton = Button(16)
@@ -81,6 +81,3 @@ def alternar_grabacion():
 
 # Asignar la función de alternar grabación al evento de presionar el botón
 boton.when_pressed = alternar_grabacion
-
-# Mantener el programa en ejecución
-pause()
