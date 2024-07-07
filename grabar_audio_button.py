@@ -3,6 +3,7 @@ import pyaudio
 import wave
 import threading
 from gpiozero import Button
+from signal import pause
 
 # Configuración de PyAudio
 FORMAT = pyaudio.paInt16
