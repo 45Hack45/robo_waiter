@@ -155,8 +155,12 @@ while True:
             tiempo = tiempo - 0.1
         allStop()
         sleep(1)
-        
-            
+
+        allStop()
+        rotateBack()
+        sleep(2) 
+        allStop()
+        sleep(1)    
         
         print("Esperando. Ponga el peso.")
         weight = float(str(hx.weight(35))[:-2])
