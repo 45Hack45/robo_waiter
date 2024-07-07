@@ -51,7 +51,7 @@ def grabar_audio():
         archivo_wave.setframerate(RATE)
         archivo_wave.writeframes(b''.join(frames))
         diccionario = speech_to_text_robowaiter.speech_to_text()
-    return diccionario
+    print(diccionario)
     print(f"Archivo guardado como {archivo_salida}")
 
 # Función para detener la grabación
@@ -80,7 +80,6 @@ def alternar_grabacion():
 
 # Asignar la función de alternar grabación al evento de presionar el botón
 boton.when_pressed = alternar_grabacion
-print(diccionario)
 
 # Mantener el programa en ejecución
 pause()
