@@ -57,8 +57,7 @@ def main(start):
         recording_thread = threading.Thread(target=start_recording)
         recording_thread.start()
         button.when_pressed = stop_recording
-        diccionario = speech_to_text_robowaiter.speech_to_text()
-        print(diccionario)
 
-if __name__ == "__main__":
-    button.when_pressed = main(True)
+button.when_pressed = main(True)
+diccionario = speech_to_text_robowaiter.speech_to_text()
+print(diccionario)
