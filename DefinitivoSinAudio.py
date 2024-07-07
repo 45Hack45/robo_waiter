@@ -124,7 +124,7 @@ while True:
         
         allStop()
         rotateBack()
-        sleep(2) 
+        sleep(2.2) 
         allStop()
         sleep(1)
     else:
@@ -144,7 +144,7 @@ while True:
         else:
             allStop()
             rotateBack()
-            sleep(2) 
+            sleep(2.2) 
             allStop()
             sleep(1)
             
@@ -162,9 +162,9 @@ while True:
 
         allStop()
         rotateBack()
-        sleep(2) 
+        sleep(2.2) 
         allStop()
-        sleep(1)    
+        sleep(3)    
         
         print("Esperando. Ponga el peso.")
         weight = float(str(hx.weight(35))[:-2])
@@ -201,7 +201,7 @@ while True:
                 sleep(0.1)
                 tiempo = tiempo - 0.1
             allStop()
-            sleep(1)
+            sleep(3)
         
         print("Quite el peso")
         while(weight > 10):
@@ -212,6 +212,6 @@ while True:
         if(comanda == 2):
             allStop()
             rotateBack()
-            sleep(2) 
+            sleep(2.2) 
             allStop()
             sleep(1)
