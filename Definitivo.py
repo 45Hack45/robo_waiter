@@ -1,6 +1,6 @@
 
 import speech_to_text_robowaiter
-import grabar_audio_button.py
+import grabar_audio_button
 from gpiozero import PWMOutputDevice, DistanceSensor, Button
 from time import sleep
 from queue import Queue
