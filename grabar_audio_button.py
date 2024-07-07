@@ -61,7 +61,7 @@ def main(start):
         recording_thread.start()
         button.when_pressed = stop_recording
 
-diccionario = button.when_pressed = main(true)
+diccionario = button.when_pressed = main(True)
 print(diccionario)
 
 pause()
