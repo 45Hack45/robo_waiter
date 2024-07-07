@@ -11,7 +11,7 @@ CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
 AUDIO_OUTPUT_FILENAME = "grabacion.wav"
-
+GRABAR = True
 # Configuración de GPIO
 stop_button = Button(16)  # Usando el pin GPIO 17 para detener la grabación
 
@@ -52,7 +52,7 @@ def start_recording():
 def stop_recording():
     global is_recording
     is_recording = False
-
+    GRABAR = False
 def main(start):
     if start:
         print("Starting recording...")
@@ -62,11 +62,11 @@ def main(start):
 
 if __name__ == "__main__":
     # Reemplaza True por el valor que quieres pasar como argumento
-    main(True)
+    main(GRABAR)
     
     # Mantener el programa en ejecución
     print("Press the stop button to end recording.")
-    while True:
+    while GRABAR:
         time.sleep(1)  # Mantener el programa en ejecución
     diccionario = speech_to_text_robowaiter.speech_to_text()
     print(diccionario)
