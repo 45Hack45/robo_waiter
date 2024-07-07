@@ -79,5 +79,3 @@ def alternar_grabacion():
         temporizador.start()
         print("Grabación iniciada.")
 
-# Asignar la función de alternar grabación al evento de presionar el botón
-boton.when_pressed = alternar_grabacion
