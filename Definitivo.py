@@ -6,7 +6,7 @@ from HX711 import *
 import speech_to_text_robowaiter
 import grabar_audio_button
 
-
+boton = Button(16)
 Boton_on = False
 
 
