@@ -1,9 +1,10 @@
+
+import speech_to_text_robowaiter
+import grabar_audio_button.py
 from gpiozero import PWMOutputDevice, DistanceSensor, Button
 from time import sleep
 from queue import Queue
 from HX711 import *
-import grabar_audio_button
-import speech_to_text_robowaiter
 
 PWM_FORWARD_LEFT_PIN = 26
 PWM_REVERSE_LEFT_PIN = 19
@@ -78,8 +79,12 @@ sleep(1)
 sleep(5)
 
 if Boton_on:
+    print('Esperando.')
     grabar_audio_button.main(Boton_on)
     diccionario = speech_to_text_robowaiter.speech_to_text()
+    sleep(0.5)
+        
+    queue.put(table)
     print(diccionario)
 
 sleep(2)
