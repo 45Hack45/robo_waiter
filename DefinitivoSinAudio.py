@@ -8,7 +8,7 @@ PWM_REVERSE_LEFT_PIN = 19
 PWM_FORWARD_RIGHT_PIN = 13
 PWM_REVERSE_RIGHT_PIN = 6
 
-
+print('Antes de peso')
 sensor1 = DistanceSensor(echo=27, trigger=22, max_distance=1, threshold_distance=0.5)
 sensor2 = DistanceSensor(echo=23, trigger=17, max_distance=1, threshold_distance=0.5)
 boton = Button(16)
@@ -16,6 +16,7 @@ hx = SimpleHX711(2, 3, -370, -367471)
 hx.setUnit(Mass.Unit.G)
 hx.zero()
 print(float(str(hx.weight(35))[:-2]))
+print('Después de peso')
 
 Boton_on = False
 
