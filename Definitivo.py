@@ -78,6 +78,7 @@ sleep(1)
 sleep(5)
 
 if Boton_on:
+    archivo_salida = "grabacion.wav"
     audio = pyaudio.PyAudio()
 
     # Iniciar la grabación
