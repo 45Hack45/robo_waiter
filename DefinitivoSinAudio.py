@@ -84,7 +84,7 @@ if Boton_on:
     queue.put(table)
     print('Has pedido una hamburguesa')
 
-sleep(1)
+sleep(2)
 
 while True:
     
@@ -119,6 +119,8 @@ while True:
                 
             queue.put(table)
             print('Has pedido una hamburguesa')
+
+        sleep(2)
         
         allStop()
         rotateBack()
