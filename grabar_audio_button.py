@@ -47,6 +47,7 @@ def start_recording():
     wf.setframerate(RATE)
     wf.writeframes(b''.join(frames))
     wf.close()
+    print("Grabación guardada")
     
 def stop_recording():
     global is_recording
