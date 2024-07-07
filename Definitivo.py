@@ -1,6 +1,4 @@
 
-"import speech_to_text_robowaiter"
-"import grabar_audio_button"
 from gpiozero import PWMOutputDevice, DistanceSensor, Button
 from time import sleep
 from queue import Queue
@@ -80,6 +78,8 @@ sleep(5)
 
 if Boton_on:
     print('Esperando.')
+    import speech_to_text_robowaiter
+    import grabar_audio_button
     grabar_audio_button.main(Boton_on)
     diccionario = speech_to_text_robowaiter.speech_to_text()
     sleep(0.5)
