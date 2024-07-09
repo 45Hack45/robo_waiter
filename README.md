@@ -34,7 +34,7 @@ Practica RLP
 
 #### M1-Hardware
 
-![Diagrama de conexiones](https://github.com/45Hack45/robo_waiter/blob/main/conexiones proyecto.jpg)
+![Diagrama de conexiones](https://github.com/45Hack45/robo_waiter/blob/23fafc6506aca0948aa448da716c69b8cfb494a7/conexiones_proyecto.jpg)
 
 #### M2-3D
 
