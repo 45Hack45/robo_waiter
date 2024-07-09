@@ -144,14 +144,43 @@ while True:
         sleep(5)
         
         if Boton_on:
-            print('Esperando.')
+            archivo_salida = "grabacion.wav"
+            audio = pyaudio.PyAudio()
+
+            # Iniciar la grabación
+            stream = audio.open(format=FORMATO, channels=CANALES,
+                    rate=RATE, input=True,
+                    frames_per_buffer=CHUNK)
+    
+            print("Grabando...")
+
+            frames = []
+
             while(Boton_on == True):
-                print('.')
-                sleep(0.5)
+                data = stream.read(CHUNK)
+                frames.append(data)
+
+            print("Grabación completada.")
+
+            # Detener la grabación
+            stream.stop_stream()
+            stream.close()
+            audio.terminate()
+
+            # Guardar el audio en un archivo WAV
+            with wave.open(archivo_salida, 'wb') as archivo_wave:
+                archivo_wave.setnchannels(CANALES)
+                archivo_wave.setsampwidth(audio.get_sample_size(FORMATO))
+                archivo_wave.setframerate(RATE)
+                archivo_wave.writeframes(b''.join(frames))
+        
+                print(f"Archivo guardado como {archivo_salida}")
+                diccionario = speech_to_text_robowaiter.speech_to_text()
+            
                 
             queue.put(table)
-            print('Has pedido una hamburguesa')
-
+            print(diccionario)
+        
         sleep(2)
 
         if(queue.empty()):
