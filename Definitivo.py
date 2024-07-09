@@ -32,6 +32,16 @@ reverseRight = PWMOutputDevice(PWM_REVERSE_RIGHT_PIN, frequency=1000)
 table = 1
 queue = Queue()
 
+# Parámetros de grabación
+FORMATO = pyaudio.paInt16
+CANALES = 1
+RATE = 44100
+CHUNK = 1024
+archivo_salida = "grabacion.wav"
+grabando = False
+hilo_grabacion = None
+temporizador = None
+TIEMPO_LIMITE = 50  # Tiempo límite en segundos
 
 def cambio():
     global Boton_on
@@ -79,7 +89,6 @@ sleep(1)
 sleep(5)
 
 if Boton_on:
-    archivo_salida = "grabacion.wav"
     audio = pyaudio.PyAudio()
 
     # Iniciar la grabación
