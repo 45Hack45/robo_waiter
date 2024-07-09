@@ -7,29 +7,36 @@ Practica RLP
 
 ### 3-Install
 
+* Pip
+    * pip install PyAudio
+    * pip install google-cloud
+    * pip install google-oauth2-tool
+
+* HX711: Seguir las instrucciones de instalacion del [repositorio](https://github.com/endail/hx711-rpi-py?tab=readme-ov-file#install)
+
 ### 4-Libraries
 
--gpiozero
+* gpiozero
 
--time 
+* time 
 
--io
+* io
 
--google.cloud
+* google.cloud
 
--google.oauth2
+* google.oauth2
 
--hx711
+* hx711
 
--pyaudio
+* pyaudio
 
--wave
+* wave
 
--signal
+* signal
 
--threading
+* threading
 
--queue
+* queue
 
 
 #### M1-Hardware
@@ -48,3 +55,5 @@ Practica RLP
 
 ### 6-Refs
 
+* [Libreria sensor de peso hx711](https://github.com/endail/hx711-rpi-py)
+* [Snipets gpiozero](https://gpiozero.readthedocs.io/en/latest/recipes.html)
