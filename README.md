@@ -3,23 +3,33 @@ Practica RLP
 
 ### 1-RoboWaiter
 
-### 2-Recorre la habitación por las mesas en busca de pedidos. Busca la comida en la cocina y vuelve a la mesa para entregarla.
+### 2-Robot camarero que recorre las mesas esperando pedidos, le pides lo que quieres a través de un micrófono, va a la cocina a buscar el pedido y lo entrega.
 
 ### 3-Install
 
 ### 4-Libraries
 
-gpiozero
-time 
-io
-google.cloud
-google.oauth2
-hx711
-pyaudio
-wave
-signal
-threading
-queue
+-gpiozero
+
+-time 
+
+-io
+
+-google.cloud
+
+-google.oauth2
+
+-hx711
+
+-pyaudio
+
+-wave
+
+-signal
+
+-threading
+
+-queue
 
 
 #### M1-Hardware
