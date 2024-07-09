@@ -41,7 +41,7 @@ archivo_salida = "grabacion.wav"
 grabando = False
 hilo_grabacion = None
 temporizador = None
-TIEMPO_LIMITE = 50  # Tiempo límite en segundos
+TIEMPO_LIMITE = 20  # Tiempo límite en segundos
 
 def cambio():
     global Boton_on
