@@ -3,7 +3,7 @@ Practica RLP
 
 ### 1-RoboWaiter
 
-### 2-Mapea la habitación y se le indica cada mesa manualmente. Después reparte comida a las mesas que queramos, enciende luz en la cada mesa correcta y vuelve a un punto inicial.
+### 2-Recorre la habitación por las mesas en busca de pedidos. Busca la comida en la cocina y vuelve a la mesa para entregarla.
 
 ### 3-Install
 
