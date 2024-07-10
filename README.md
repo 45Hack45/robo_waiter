@@ -53,7 +53,11 @@ Practica RLP
   
 ### 5-To do's
 
+* Donar-li un pes als diferents aliments i fer que comprobés el pes mes o menys exacte per moure's
 
+* Fer que el robot pogués anar a més taules
+
+* Fer el diseny del robot més atractiu per a un restaurant
 
 ### 6-Refs
 
