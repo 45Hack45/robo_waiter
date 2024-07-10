@@ -6,7 +6,7 @@ Practica RLP
 Robot camarero que recorre las mesas esperando pedidos, le pides lo que quieres a través de un micrófono, va a la cocina a buscar el pedido y lo entrega.
 
 ### 2-Install
-
+Las dependencias necesarias a instalar en una raspberry pi.
 * Pip
     * pip install PyAudio
     * pip install google-cloud
