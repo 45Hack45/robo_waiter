@@ -61,6 +61,8 @@ Aquest mòdul s'encarrega de grabar les comandes de les persones per audio. Pasa
   
 ### 5-To do's
 
+* Utilitzar encoders per a millorar la precisió dels moviments del robot
+
 * Donar-li un pes als diferents aliments i fer que comprobés el pes mes o menys exacte per moure's
 
 * Fer que el robot pogués anar a més taules
