@@ -3,9 +3,9 @@ Practica RLP
 
 ### 1-RoboWaiter
 
-### 2-Robot camarero que recorre las mesas esperando pedidos, le pides lo que quieres a través de un micrófono, va a la cocina a buscar el pedido y lo entrega.
+Robot camarero que recorre las mesas esperando pedidos, le pides lo que quieres a través de un micrófono, va a la cocina a buscar el pedido y lo entrega.
 
-### 3-Install
+### 2-Install
 
 * Pip
     * pip install PyAudio
@@ -14,7 +14,7 @@ Practica RLP
 
 * HX711: Seguir las instrucciones de instalacion del [repositorio](https://github.com/endail/hx711-rpi-py?tab=readme-ov-file#install)
 
-### 4-Libraries
+### 3-Libraries
 
 * gpiozero
 
@@ -47,9 +47,6 @@ Practica RLP
 
 ![Modelo 3D](https://github.com/45Hack45/robo_waiter/blob/main/Robowaiter_3D.png)
 
-#### M3-Mòdul Controlador
-
-#### M4-Mòdul Escolta
   
 ### 5-To do's
 
