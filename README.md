@@ -47,11 +47,13 @@ Practica RLP
 
 ![Modelo 3D](https://github.com/45Hack45/robo_waiter/blob/main/Robowaiter_3D.png)
 
-#### M3-Controlador
+#### M3-Mòdul Controlador
 
-#### M4-Escucha
+#### M4-Mòdul Escolta
   
 ### 5-To do's
+
+
 
 ### 6-Refs
 
