@@ -8,9 +8,9 @@ Robot camarero que recorre las mesas esperando pedidos, le pides lo que quieres 
 ### 2-Install
 Las dependencias necesarias a instalar en una raspberry pi.
 * Pip
-    * pip install PyAudio
-    * pip install google-cloud
-    * pip install google-oauth2-tool
+    * PyAudio
+    * google-cloud
+    * google-oauth2-tool
 
 * HX711: Seguir las instrucciones de instalacion del [repositorio](https://github.com/endail/hx711-rpi-py?tab=readme-ov-file#install)
 
