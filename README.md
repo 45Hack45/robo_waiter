@@ -47,6 +47,17 @@ Robot camarero que recorre las mesas esperando pedidos, le pides lo que quieres 
 
 ![Modelo 3D](https://github.com/45Hack45/robo_waiter/blob/main/Robowaiter_3D.png)
 
+#### M3-Mòdul Controlador
+
+El mòdul controlador sencarrega de fer els dos modes que té el nostre robot.
+
+* Mode demanar: En aquest mode el robot surt de la cuïna (lloc d'inici) i recorre totes les taules esperant-se una mica en cada per agafar les comandes.
+
+* Mode repartir: En aquest mode el robot va al lloc d'inici a esperar el pes de la comanda i una vegada el detecta torna a la taula que s'ha fet la comanda i s'espera fins que hi hagi pes.
+
+#### M4-Mòdul Escolta
+
+Aquest mòdul s'encarrega de grabar les comandes de les persones per audio. Pasa el audio a una funció de speech-to-text on es treuran les paraules claus que hem possat (diferents menjars).
   
 ### 5-To do's
 
